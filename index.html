@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Seattle Neighborhood Map</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Custom script -->
+    <script src="./scripts/scripts.js"></script>
+    <!-- External scripts -->
+    <script async defer src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBviWNYI57D_v1kK9_ZtJ8syTALDcwQc5I&callback=startApp"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+    <div class="searchArea" id="searchArea">
+        <input class="search-field" id="search-box" placeholder="Enter location..." data-bind="textInput: term, valueUpdate: 'afterkeydown'"/>
+        <span>Type to filter</span>
+    </div>
+
+    <div class="appArea" id="appArea">
+        <div class="location-list" id="location-list">
+            <ul class="results" id="results" data-bind="foreach: filteredList">
+                <li class="spot" id="place" data-bind="text: name, click: bounce"></li>
+            </ul>
+
+            <span>Location data by Foursquare</span>
+        </div>
+
+        <div id="mapArea" class="mapArea">There has been an error loading Google Maps. Try Again.</div>
+
+    </div>
+
+</body>
+
+</html>
