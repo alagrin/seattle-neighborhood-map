@@ -4,15 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Seattle Neighborhood Map</title>
-    <link rel="stylesheet" href="styles/styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Custom script -->
-    <script src="scripts.js"></script>
-    <!-- External scripts -->
-    <script async defer src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBviWNYI57D_v1kK9_ZtJ8syTALDcwQc5I&callback=startApp"></script>
+    <!-- Scripts -->
+    <script async defer src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBviWNYI57D_v1kK9_ZtJ8syTALDcwQc5I&callback=startApp" onerror="loadingError()"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -32,10 +27,16 @@
             <span>Location data by Foursquare</span>
         </div>
 
-        <div id="mapArea" class="mapArea">There has been an error loading Google Maps. Try Again.</div>
+        <div id="mapArea" class="mapArea"></div>
 
     </div>
-
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="scripts.js"></script>
+<script>
+window.loadingError = function() {
+	alert("Google Maps failed to load. Please check your internet connection and try again.");
+}
+</script>
 </body>
 
 </html>

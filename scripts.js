@@ -1,3 +1,16 @@
+'use strict';
+
+// Map constants
+var CONSTANTS = {
+	MAP_CENTER_LAT: 47.606,
+	MAP_CENTER_LNG: -122.332,
+	MAP_ZOOM: 15
+};
+
+// Foursquare API access
+var clientID = 'IQBDWUCGPKTF1VZGHFARFOQMEGZR5HBRSEJY1ZBWLYG0BU2X';
+var clientSecret = 'PZ0I1IBSF45JK05SCMQILMQSHM3WHZSWRTC2MZ4WNS2WJRA2';
+
 let startingLocations = [
 	{
 		name: 'Frye Art Museum',
@@ -33,7 +46,7 @@ const Location = function(data) {
 	this.name = data.name;
 	this.lat = data.lat;
     this.lng = data.lng;
-    this.URL = ""
+    this.URL = "";
 	
 	this.street = "";
 	this.city = "";
@@ -98,21 +111,17 @@ const Location = function(data) {
      	}, 1800);
 	});
 };
+let map;
 
 function AppViewModel() {
 	map = new google.maps.Map(document.getElementById('mapArea'), {
-        zoom: 15,
-        center: {lat: 47.606, lng: -122.332}
+        zoom: CONSTANTS.MAP_ZOOM,
+        center: {lat: CONSTANTS.MAP_CENTER_LAT, lng: CONSTANTS.MAP_CENTER_LNG}
 	});
 	
 	var self = this;
 	this.term = ko.observable("");
 	this.loadedLocations = ko.observableArray([]);
-
-	// Foursquare API
-
-	clientID = 'IQBDWUCGPKTF1VZGHFARFOQMEGZR5HBRSEJY1ZBWLYG0BU2X';
-	clientSecret = 'PZ0I1IBSF45JK05SCMQILMQSHM3WHZSWRTC2MZ4WNS2WJRA2';
 
 	startingLocations.forEach(function(spot){
 		self.loadedLocations.push(new Location(spot));
@@ -143,9 +152,4 @@ function AppViewModel() {
 
 function startApp() {
 	ko.applyBindings(new AppViewModel());
-}
-
-// Error handling
-function errorLoading() {
-	alert("Google Maps failed to load. Please check your internet connection and try again.");
 }
