@@ -4,7 +4,9 @@ The project shows local cafes in the downtown Seattle area using KnockoutJS as w
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. Download the repo and open up index.html from your computer browser or mobile phone.
+To get the project up and running on your local machine for development and testing purposes... Download or clone the repo and open up index.html from your computer browser or mobile phone.
+
+`$ git clone https://github.com/alagrin92/seattle-neighborhood-map.git`
 
 ### Prerequisites
 

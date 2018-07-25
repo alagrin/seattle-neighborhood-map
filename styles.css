@@ -5,6 +5,42 @@ html, body {
 	background-color: lightblue;
 }
 
+.strong {
+	font-style: bold;
+}
+
+.hamburger{
+	background:none;
+	position:absolute;
+	top:0;
+	right:0;
+	line-height:45px;
+	padding:5px 15px 0px 15px;
+	color:rgb(0, 0, 0);
+	border:0;
+	font-size:1.4em;
+	font-weight:bold;
+	cursor:pointer;
+	outline:none;
+	z-index:10000000000000;
+  }
+
+  .close{
+	background:none;
+	position:absolute;
+	top:0px;
+	right:0;
+	padding:7px 15px 0px 15px;
+	color:rgb(0, 0, 0);
+	border:0;
+	font-size:3em;
+	line-height:65px;
+	font-weight:bold;
+	cursor:pointer;
+	outline:none;
+	z-index:10000000000000;
+  }
+
 .searchArea {
 	width: 50%;
 	padding-left: 25%;

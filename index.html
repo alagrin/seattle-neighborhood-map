@@ -13,6 +13,8 @@
 </head>
 
 <body>
+        <button class="hamburger">&#9776;</button>
+        <button class="close">&#735;</button>
     <div class="searchArea" id="searchArea">
         <input class="search-field" id="search-box" placeholder="Enter location..." data-bind="textInput: term, valueUpdate: 'afterkeydown'"/>
         <span>Type to filter</span>
@@ -20,7 +22,7 @@
 
     <div class="appArea" id="appArea">
         <div class="location-list" id="location-list">
-            <ul class="results" id="results" data-bind="foreach: filteredList">
+            <ul class="results listView" id="results" data-bind="foreach: filteredList">
                 <li class="spot" id="place" data-bind="text: name, click: bounce"></li>
             </ul>
 
@@ -36,6 +38,25 @@
 window.loadingError = function() {
 	alert("Google Maps failed to load. Please check your internet connection and try again.");
 }
+</script>
+<script>
+$(document).ready(function() {
+    $( ".close" ).show();
+    $(".hamburger").hide();
+    $( ".close" ).click(function() {
+        $( ".location-list" ).slideToggle( "slow", function() {
+            $( ".hamburger" ).show();
+            $( ".close" ).hide();
+        });
+    });
+
+    $( ".hamburger" ).click(function() {
+        $( ".location-list" ).slideToggle( "slow", function() {
+            $( ".close" ).show();
+            $( ".hamburger" ).hide();
+        });
+    });
+});
 </script>
 </body>
 

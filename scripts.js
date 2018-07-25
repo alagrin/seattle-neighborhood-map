@@ -51,15 +51,17 @@ const Location = function(data) {
 	this.street = "";
 	this.city = "";
 	this.phone = "";
+	this.category = "";
 
 	const fsqrUrl = `https://api.foursquare.com/v2/venues/search?ll=${this.lat},${this.lng}&client_id=${clientID}&client_secret=${clientSecret}&v=20160118&query=${this.name}`;
 
 	$.getJSON(fsqrUrl).done(function(data) {
 		let results = data.response.venues;
-		
+		console.log(results);
         return results.map(result => {
             self.street = result.location.formattedAddress[0];
-     	    self.city = result.location.formattedAddress[1];
+			self.city = result.location.formattedAddress[1];
+			self.category = result.categories[0].name;
 		});
 		
 	}).fail(function() {
@@ -67,7 +69,8 @@ const Location = function(data) {
 	});
 
 	this.infoString = '<div class="info-window-content"><div class="title"><b>' + data.name + "</b></div>" +
-        '<div class="content"><a href="' + self.URL +'">' + self.URL + "</a></div>" +
+		'<div class="content"><a href="' + self.URL +'">' + self.URL + "</a></div>" +
+		'<div class="content">' + self.category + "</div>" +
         '<div class="content">' + self.street + "</div>" +
         '<div class="content">' + self.city + "</div>" +
          "</div></div>";
@@ -97,7 +100,8 @@ const Location = function(data) {
 
 	this.marker.addListener('click', function(){
 		self.infoString = '<div class="info-window-content"><div class="title"><b>' + data.name + "</b></div>" +
-        '<div class="content"><a href="' + self.URL +'">' + self.URL + "</a></div>" +
+		'<div class="content"><a href="' + self.URL +'">' + self.URL + "</a></div>" +
+		'<div class="content">' + self.category + "</div>" +
         '<div class="content">' + self.street + "</div>" +
         '<div class="content">' + self.city + "</div>" +
         "</div></div>";
